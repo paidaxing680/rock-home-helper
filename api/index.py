@@ -4,7 +4,7 @@ from datetime import datetime
 
 app = Flask(**name**)
 
-API_KEY = "你的API_KEY"
+API_KEY = "sk-df7c33694b4a98280a038e311758b503"
 
 URL = "https://wegame.shallow.ink/api/v1/games/rocom/ingame/home/info"
 
