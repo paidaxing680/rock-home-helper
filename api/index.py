@@ -1,0 +1,10 @@
+from flask import Flask, jsonify
+
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return jsonify({
+        "success": True,
+        "message": "Hello Vercel"
+    })
