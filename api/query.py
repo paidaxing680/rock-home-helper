@@ -8,6 +8,3 @@ def home():
         "success": True,
         "message": "Hello Vercel Flask"
     })
-
-# Vercel 入口
-app = app
