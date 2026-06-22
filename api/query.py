@@ -1,20 +1,13 @@
-from http.server import BaseHTTPRequestHandler
-import json
+from flask import Flask, jsonify
 
-class handler(BaseHTTPRequestHandler):
+app = Flask(__name__)
 
-    def do_GET(self):
+@app.route("/")
+def home():
+    return jsonify({
+        "success": True,
+        "message": "Hello Vercel Flask"
+    })
 
-        self.send_response(200)
-        self.send_header(
-            "Content-Type",
-            "application/json"
-        )
-        self.end_headers()
-
-        self.wfile.write(
-            json.dumps({
-                "success": True,
-                "message": "hello"
-            }).encode()
-        )
+# Vercel 入口
+app = app
