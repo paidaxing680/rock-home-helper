@@ -7,7 +7,6 @@ API_KEY = "sk-df7c33694b4a98280a038e311758b503"
 
 URL = "https://wegame.shallow.ink/api/v1/games/rocom/ingame/home/info"
 
-
 @app.route("/")
 def query_home():
 
@@ -41,7 +40,17 @@ def query_home():
 
         result = response.json()
 
-        return jsonify(result)
+        if result.get("code") != 0:
+            return jsonify(result)
+
+        data = result.get("data", {})
+        home_info = data.get("home_info", {})
+
+        return jsonify({
+            "success": True,
+            "uid": uid,
+            "home_info": home_info
+        })
 
     except Exception as e:
         return jsonify({
