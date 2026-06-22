@@ -1,6 +1,5 @@
 from flask import Flask, request, jsonify
 import requests
-from datetime import datetime
 
 app = Flask(**name**)
 
@@ -33,25 +32,16 @@ try:
         "wait_ms": 5000
     }
 
-    resp = requests.post(
+    response = requests.post(
         URL,
         headers=headers,
         json=body,
         timeout=15
     )
 
-    res_data = resp.json()
+    result = response.json()
 
-    if res_data.get("code") != 0:
-        return jsonify({
-            "success": False,
-            "message": res_data.get("message")
-        })
-
-    return jsonify({
-        "success": True,
-        "data": res_data.get("data", {})
-    })
+    return jsonify(result)
 
 except Exception as e:
     return jsonify({
